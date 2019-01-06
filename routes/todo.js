@@ -8,7 +8,17 @@ router.get('/' , (req,res) => {
         res.json(todos);
     })
     .catch((err)=>{
-        res.send('ERROR');
+        res.send(err);
+    })
+});
+
+router.post('/' , (req,res) => {
+   db.Todo.create(req.body)
+   .then((newTodo)=>{
+        res.json(newTodo);
+    })
+    .catch((err)=>{
+        res.send(err);
     })
 });
 
